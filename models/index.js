@@ -11,11 +11,15 @@ Category.hasMany(Product, {
 Product.belongsTo(Category, {
   foreignKey: 'category_id',
 });
-Product.belongsToMany(ProductTag, {
+Product.belongsToMany(Tag, {
   foreignKey: 'product_id',
+  through: {model: ProductTag, unique: false},
+
 });
-Tag.belongsToMany(ProductTag, {
+Tag.belongsToMany(Product, {
   foreignKey: 'tag_id',
+  through: {model: ProductTag, unique: false},
+
 });
 // Products belongToMany Tags (through ProductTag)
 
